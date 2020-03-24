@@ -24,7 +24,15 @@ let SCRABBLE_TILE_SCORES = {
  */
 
 function scrabbleScore(word) {
-  // This is your job. :)
+  // Coerce string to all lower case
+  word = word.toLowerCase();
+
+  let scoreAccumulator = 0;
+  for (let letter of word) {
+    scoreAccumulator += SCRABBLE_TILE_SCORES[letter];
+  }
+  return scoreAccumulator;
+
 }
 
 if (require.main === module) {
@@ -35,6 +43,23 @@ if (require.main === module) {
 
   // Add your own sanity checks here.
   // How else will you be sure your code does what you think it does?
+  let tests = [
+    {
+      word: 'hello',
+      expected: 8
+    },
+    {
+      word: 'world',
+      expected: 9
+    },
+    {
+      word: 'will',
+      expected: 7
+    }
+  ];
+  for (let test of tests) {
+    console.log(scrabbleScore(test.word) === test.expected);
+  }
 }
 
 module.exports = scrabbleScore;
