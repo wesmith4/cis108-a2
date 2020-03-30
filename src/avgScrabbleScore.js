@@ -7,9 +7,7 @@ let scrabbleScore = require('./scrabbleScore');
  * Use your implementation of scrabbleScore.
  */
 function avgScrabbleScore(words) {
-  let scores = words.map(scrabbleScore);
-
-  return scores.reduce((a,b) => a+b) / scores.length;
+  return words.map(scrabbleScore).reduce((a,b) => a+b) / words.length;
 }
 
 if (require.main === module) {
