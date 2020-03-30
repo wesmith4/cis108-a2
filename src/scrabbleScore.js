@@ -25,14 +25,16 @@ let SCRABBLE_TILE_SCORES = {
 
 function scrabbleScore(word) {
   // Coerce string to all lower case
-  word = word.toLowerCase();
+  /* word = word.toLowerCase();
 
   let scoreAccumulator = 0;
   for (let letter of word) {
     scoreAccumulator += SCRABBLE_TILE_SCORES[letter];
   }
-  return scoreAccumulator;
+  return scoreAccumulator; */
 
+
+  return Array.from(word.toLowerCase()).reduce((acc, letter) => acc + SCRABBLE_TILE_SCORES[letter], 0);
 }
 
 if (require.main === module) {
@@ -58,7 +60,9 @@ if (require.main === module) {
     }
   ];
   for (let test of tests) {
+    console.log(scrabbleScore(test.word));
     console.log(scrabbleScore(test.word) === test.expected);
+
   }
 }
 
